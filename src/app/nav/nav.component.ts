@@ -2,15 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { UIService } from '../ui.service';
 
 @Component({
-  selector: 'app-write',
-  templateUrl: './write.component.html',
-  styleUrls: ['./write.component.scss']
+  selector: 'app-nav',
+  templateUrl: './nav.component.html',
+  styleUrls: ['./nav.component.scss']
 })
-export class WriteComponent implements OnInit {
-
-  body = '';
-  title = '';
-
+export class NavComponent implements OnInit {
 
   constructor(private uiService: UIService) { }
 

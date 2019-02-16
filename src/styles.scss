@@ -2,14 +2,31 @@
 @import 'assets/bootstrap-grid';
 @import url('https://fonts.googleapis.com/css?family=Crimson+Text:400,600,700');
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,600,700');
+@import url('https://fonts.googleapis.com/css?family=Rubik:400,500,700');
+
+$beige: #FEF7F5;
+$primary: #EA5E40;
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
 
 body {
-    font-family: 'Nunito';
-    font-weight: 600;
+    font-family: 'Rubik';
+    // font-weight: 600;
+}
+
+.bg-beige {
+    background-color: $beige;
 }
 
 .bg-white {
     background-color: white;
+}
+
+.text-primary {
+    color: $primary;
 }
 
 .text-center {
@@ -20,8 +37,21 @@ body {
     width:100%;
 }
 
+
+.h-100 {
+    height:100%;
+}
+
+.position-fixed {
+    position: fixed;
+}
+
 .border-round {
     border-radius: 20px;
+}
+
+.shadow {
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.09);
 }
 
 

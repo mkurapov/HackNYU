@@ -7,13 +7,17 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { WriteComponent } from './write/write.component';
 import { ConnectComponent } from './connect/connect.component';
+import { NavComponent } from './nav/nav.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     WriteComponent,
-    ConnectComponent
+    ConnectComponent,
+    NavComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
