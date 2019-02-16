@@ -1,5 +1,5 @@
-<div (click)="uiService.onSelectEntry(entry.id)" class="px-3 py-2 entry" >
-  <div>{{ entry.date | date}}</div>
-  <div>{{ entry.title }}</div>
-  <div>{{ entry.body | slice:0:200}}</div>
+<div (click)="apiService.onSelectEntry(entry.id)" class="px-3 py-3 entry d-flex flex-column col-md-12 border-bottom" >
+  <h5 class="mb-2">{{ entry.date | date}}</h5>
+  <h5 class="mb-4">{{ entry.title }}</h5>
+  <p class="m-0">{{ entry.body | slice:0:200}}</p>
 </div>

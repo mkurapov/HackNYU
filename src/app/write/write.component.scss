@@ -1,6 +1,8 @@
 textarea {
     font-size: 20px;
-    height:70vh;
+    min-height:200vh;
+    // resize: none;
+    overflow-y: auto;
 }
 
 input {
@@ -13,12 +15,3 @@ input {
     font-weight: 500;
 }
 
-.container {
-    height: 100%;
-    position: relative;
-    transition: transform 0.5s ease-in-out;
-}
-
-.container.move {
-    transform: translateX(200px);
-}

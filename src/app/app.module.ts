@@ -14,6 +14,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { OptionsComponent } from './options/options.component';
 import { SidebarEntryComponent } from './sidebar-entry/sidebar-entry.component';
+import { SidebarChatComponent } from './sidebar-chat/sidebar-chat.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { SidebarEntryComponent } from './sidebar-entry/sidebar-entry.component';
     SidebarComponent,
     DashboardComponent,
     OptionsComponent,
-    SidebarEntryComponent
+    SidebarEntryComponent,
+    SidebarChatComponent
   ],
   imports: [
     BrowserModule,

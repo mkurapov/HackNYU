@@ -1,2 +1,11 @@
-<input [(ngModel)]='uiService.visibleEntry.title' (ngModelChange)="uiService.onEntryEdit($event)" placeholder="Title" class="w-100 mb-3 title"/>
-<textarea [(ngModel)]='uiService.visibleEntry.body' (ngModelChange)="uiService.onEntryEdit($event)" placeholder="Whats on your mind?" class="w-100"></textarea>
+<!-- <div>
+    <input [(ngModel)]='uiService.visibleEntry.title' (ngModelChange)="uiService.onEntryEdit($event)" placeholder="Title" class="w-100 mb-3 d-block title"/>
+    <textarea [(ngModel)]='uiService.visibleEntry.body' (ngModelChange)="uiService.onEntryEdit($event)" placeholder="Whats on your mind?" class="w-100  d-block"></textarea> 
+
+</div> -->
+
+<div class="col-md-11 mx-auto">
+  <h4 class="col-md-12">{{ apiService.visibleEntry.date | date }} </h4>
+  <input [(ngModel)]='apiService.visibleEntry.title' placeholder="Title" class="col-md-12 mb-3 title"/>
+  <textarea [(ngModel)]='apiService.visibleEntry.body' placeholder="Start writing..." class="col-md-12"></textarea>
+</div>

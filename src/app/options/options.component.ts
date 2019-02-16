@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UIService } from '../ui.service';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-options',
@@ -8,9 +9,12 @@ import { UIService } from '../ui.service';
 })
 export class OptionsComponent implements OnInit {
 
-  constructor(private uiService: UIService) { }
+  constructor(private uiService: UIService, private apiService: ApiService) { }
 
   ngOnInit() {
   }
 
+  onCreate() {
+    this.apiService.createEntry();
+  }
 }

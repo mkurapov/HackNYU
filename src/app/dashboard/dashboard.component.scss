@@ -1,13 +1,17 @@
 .router-outlet {
-    min-height: 100%;
-    position: relative;
-    transition: transform 0.5s ease-in-out;
+    // min-height: 100%;
+    position: absolute;
+    transition: width 0.5s ease-in-out;
     transform: translateX(0);
-    background: yellow;
-    margin-left: 70px;
-    padding-top: 60px;
+    margin-left: auto;
+    width: calc(100% - 70px);
+    right: 0;
+    // background: yellow;
+    // margin-left: 70px;
+    padding-top: 100px;
 }
 
 .router-outlet.move {
-    transform: translateX(250px);
+    // transform: translateX(250px);
+    width: calc(100% - 70px - 250px);
 }

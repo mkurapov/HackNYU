@@ -12,7 +12,7 @@ export class SidebarComponent implements OnInit {
   
   url: string = '/write';
 
-  constructor(private uiService:UIService, private route: ActivatedRoute, private router: Router) {
+  constructor(private uiService:UIService, private apiService: ApiService, private route: ActivatedRoute, private router: Router) {
     router.events.subscribe(val => {
       if (val instanceof NavigationEnd) {
         this.url = val.url;

@@ -1,0 +1,14 @@
+.icon {
+    height: 30px;
+    width: 30px;
+    border: 3px solid orange;
+    border-radius: 50%;
+}
+
+.entry {
+    cursor: pointer;
+}
+
+.entry:hover {
+    background-color: #FEF7F5;
+}

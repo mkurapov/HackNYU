@@ -4,3 +4,15 @@ export interface Entry {
     date?: Date;
     title?: string;
 }
+
+export interface User {
+    id?: number;
+    name?:string;
+}
+
+export interface Chat {
+    id?:number,
+    users?: User[];
+    name?: string;
+}
+

@@ -1,14 +1,18 @@
 <div class="sidebar h-100" [ngClass]="{ 'active': uiService.isSidebarVisible }">
-  <div class="position-fixed d-block w-100 px-3 pt-3">
-    <input class="w-100" placeholder="Search..."/>
-  </div>
-  <div class="mt-3">
-      <ng-container *ngIf="url === '/write'">
-        <app-sidebar-entry *ngFor="let entry of uiService.entries" [entry]="entry"></app-sidebar-entry>
-      </ng-container>
-      <ng-container *ngIf="url === '/connect'">
-        connect
-      </ng-container>
+  <div class="position-relative h-100">
+      <div class="position-fixed search-container d-block w-100 border-bottom">
+          <input class="w-100 px-3 py-4 search" placeholder="Search..."/>
+        </div>
+        <div class="entry-container">
+            <ng-container *ngIf="url === '/write'">
+              <app-sidebar-entry *ngFor="let entry of apiService.entries" [entry]="entry"></app-sidebar-entry>
+            </ng-container>
+            <ng-container *ngIf="url === '/connect'">
+              <app-sidebar-chat *ngFor="let chat of apiService.chats" [chat]="chat"></app-sidebar-chat> 
+            </ng-container>
+        </div>
   </div>
   
+  
 </div>
+      

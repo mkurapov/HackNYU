@@ -6,14 +6,23 @@
 
 $beige: #FEF7F5;
 $primary: #EA5E40;
+$grey: #F1F1F1;
 
 html, body {
     margin: 0;
     height: 100%;
 }
 
+
+h1,h2,h3,h4,h5,h6 {
+    margin: 0;
+    font-weight: 500;
+}
+
 body {
     font-family: 'Rubik';
+    -webkit-font-smoothing: antialiased;
+
     // font-weight: 600;
 }
 
@@ -33,10 +42,17 @@ body {
     text-align: center;
 }
 
+.border-bottom {
+    border-bottom: 1px solid $grey;
+}
+
 .w-100 {
     width:100%;
 }
 
+.position-relative {
+    position: relative;
+}
 
 .h-100 {
     height:100%;
@@ -58,9 +74,17 @@ body {
 input, textarea {
     outline: none;
     font-family: 'Crimson Text';
-    // border: none;
+    border: none;
 }
 
 textarea {
     border:none;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+.pointer {
+    cursor: pointer;
 }

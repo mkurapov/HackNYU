@@ -12,6 +12,6 @@ export class DashboardComponent implements OnInit {
   constructor(private uiService: UIService, private apiService: ApiService) { }
 
   ngOnInit() {
-    this.uiService.entries = this.apiService.getEntries();
+    
   }
 }

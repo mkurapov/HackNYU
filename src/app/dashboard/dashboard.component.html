@@ -2,5 +2,7 @@
 <app-sidebar></app-sidebar>
 <app-options></app-options>
 <div class="router-outlet" [ngClass]="{ 'move': uiService.isSidebarVisible }"> 
-    <router-outlet></router-outlet>
+    <div class="col-md-12">
+      <router-outlet></router-outlet>
+    </div>
 </div>

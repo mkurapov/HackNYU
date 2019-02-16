@@ -1,8 +1,19 @@
-<div class="options w-100 position-fixed py-3 px-3" >
-  <span (click)="uiService.onToggleSidebar()" class="d-flex align-items-center">
-    <svg width="20" height="20" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M6.79904 2.003C4.1486 2.003 2 4.1516 2 6.80204V27.198C2 29.8484 4.1486 31.997 6.79904 31.997H10.0984V2.003H6.79904Z" fill="#EA5E40"/>
-      <path d="M10.0984 32V31.997M10.0984 2V2.003M10.0984 31.997H6.79904C4.1486 31.997 2 29.8484 2 27.198V6.80204C2 4.1516 4.1486 2.003 6.79904 2.003H10.0984M10.0984 31.997V2.003M10.0984 31.997H27.195C29.8454 31.997 31.994 29.8484 31.994 27.198V6.80204C31.994 4.1516 29.8454 2.003 27.195 2.003H10.0984" stroke="#EA5E40" stroke-width="3"/>
-    </svg>
-  </span>  
+<div class="options position-fixed border-bottom d-flex" [ngClass]="{ 'move': uiService.isSidebarVisible }" >
+  <div class="col-md-10 d-flex align-items-center  mx-auto">
+      <span (click)="uiService.onToggleSidebar()" class="d-flex align-items-center pointer text-primary">
+          <i *ngIf="uiService.isSidebarVisible" class="fas fa-chevron-right"></i>
+          <i *ngIf="!uiService.isSidebarVisible" class="fas fa-chevron-left"></i>
+        </span>  
+      
+        <div class="ml-auto d-flex align-items-center">
+            <span (click)="onCreate()" class="text-primary pointer">
+                Create
+            </span>
+        </div>
+  </div>
+  
+  
+  
+
+  
 </div>
