@@ -1,0 +1,13 @@
+.router-outlet {
+    min-height: 100%;
+    position: relative;
+    transition: transform 0.5s ease-in-out;
+    transform: translateX(0);
+    background: yellow;
+    margin-left: 70px;
+    padding-top: 60px;
+}
+
+.router-outlet.move {
+    transform: translateX(250px);
+}

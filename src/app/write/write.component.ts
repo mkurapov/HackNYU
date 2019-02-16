@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UIService } from '../ui.service';
+import { Entry } from '../models/general';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-write',
@@ -8,13 +10,10 @@ import { UIService } from '../ui.service';
 })
 export class WriteComponent implements OnInit {
 
-  body = '';
-  title = '';
-
-
-  constructor(private uiService: UIService) { }
+  constructor(private uiService: UIService, private apiService: ApiService) { }
 
   ngOnInit() {
+    
   }
 
 }

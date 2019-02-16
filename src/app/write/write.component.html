@@ -1,11 +1,2 @@
-
-<div class="container col-md-12" [ngClass]="{ 'move': uiService.isSidebarVisible }">
-    <div class="options w-100" >
-        <div></div>
-      </div>
-    <section class="col-md-8 mt-5 mx-auto">
-        <h5>February 17th, 2019</h5>
-        <input [(ngModel)]='title' placeholder="Title" class="w-100 mb-3 title"/>
-        <textarea [(ngModel)]='body' placeholder="Whats on your mind?" class="w-100"></textarea>
-    </section>
-</div>
+<input [(ngModel)]='uiService.visibleEntry.title' (ngModelChange)="uiService.onEntryEdit($event)" placeholder="Title" class="w-100 mb-3 title"/>
+<textarea [(ngModel)]='uiService.visibleEntry.body' (ngModelChange)="uiService.onEntryEdit($event)" placeholder="Whats on your mind?" class="w-100"></textarea>

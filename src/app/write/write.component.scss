@@ -19,14 +19,6 @@ input {
     transition: transform 0.5s ease-in-out;
 }
 
-
 .container.move {
     transform: translateX(200px);
-}
-
-.options {
-    top:0;
-    position: fixed;
-    background: yellow;
-    height: 30px;
 }

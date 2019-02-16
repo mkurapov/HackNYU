@@ -1,13 +1,13 @@
-.container {
+.sidebar {
     height:100%;
     position: fixed;
     left:0;
     top:0;
-    width:200px;
+    width:250px;
     margin-left:70px;
     z-index: 99;
     
-    transform: translateX(-200px);
+    transform: translateX(-250px);
 
     transition: transform 0.5s ease-in-out;
     background: white;
@@ -19,7 +19,7 @@
     background: transparent;  /* optional: just make scrollbar invisible */
 }
 
-.container.active {
+.sidebar.active {
     transform: translateX(0);
 }
 
