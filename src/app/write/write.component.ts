@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WriteComponent implements OnInit {
 
+  text = 'asdfasdfasdfasdfasdf';
+
+
   constructor() { }
 
   ngOnInit() {

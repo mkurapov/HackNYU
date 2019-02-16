@@ -1,5 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'assets/bootstrap-grid';
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text:400,600,700');
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,600,700');
+
+body {
+    font-family: 'Nunito';
+    font-weight: 600;
+}
 
 .bg-white {
     background-color: white;
@@ -11,4 +18,19 @@
 
 .w-100 {
     width:100%;
+}
+
+.border-round {
+    border-radius: 20px;
+}
+
+
+input, textarea {
+    outline: none;
+    font-family: 'Crimson Text';
+    // border: none;
+}
+
+textarea {
+    border:none;
 }
