@@ -26,7 +26,17 @@ body {
     // font-weight: 600;
 }
 
+
+a {
+    text-decoration: none;
+}
+
+
 .bg-beige {
+    background-color: $beige;
+}
+
+.bg-primary {
     background-color: $beige;
 }
 
@@ -83,6 +93,14 @@ textarea {
 
 .btn {
     cursor: pointer;
+}
+
+.btn-primary {
+    background: $primary;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    padding: 15px 10px;
 }
 
 .pointer {

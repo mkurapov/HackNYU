@@ -9,7 +9,7 @@ import { ApiService } from './api.service';
 export class AppComponent {
   title = 'HackNYU';
 
-  constructor(private api:ApiService) {
+  constructor(private apiService:ApiService) {
 
   }
 

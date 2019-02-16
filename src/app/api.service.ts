@@ -9,26 +9,30 @@ import { Entry, Chat } from './models/general';
   providedIn: 'root'
 })
 export class ApiService {
-  private url:string = 'http://justwrite.appspot.com/';
+  private url:string = 'http://justwrite.appspot.com';
 
-  private isLoggedIn: boolean = true;
-  private entries: Entry[];
+  private isLoggedIn: boolean = false;
+  private entries: Entry[] = [];
   private chats: Chat[];
 
   private visibleEntry:Entry;
   private visibleChat:Chat;
 
   constructor(private http:HttpClient) { 
-    this.entries = this.getEntries();
+    this.getEntries();
     this.chats = this.getChats();
-    this.visibleChat = this.chats[0];
-    this.visibleEntry = this.entries[0];
+  }
+
+  login() {
+    return of(true);
   }
 
   createEntry() {
     let newEntry = {
       id:10,
-      date: new Date()
+      date: new Date(),
+      title:'',
+      body:''
     }
     return of(newEntry).subscribe(val => { 
       this.entries.unshift(val);
@@ -53,37 +57,19 @@ export class ApiService {
     return this.http.put(this.url + '/entry', entry);
   }
 
-  getEntries(): Entry[] {
-    return [{
-      id:1,
-      date: new Date(),
-      title: "Talk to me",
-      body: "hello"
-    },
-    {
-      id:2,
-      date: new Date(),
-      title: "Another one",
-      body: "hello"
-    },
-    {
-      id:3,
-      date: new Date(),
-      title: "Another one",
-      body: "hello"
-    },
-    {
-      id:4,
-      date: new Date(),
-      title: "Another one",
-      body: "hello"
-    },
-    {
-      id:5,
-      date: new Date(),
-      title: "Another one",
-      body: "hello"
-    }];
+  getEntries() {
+    let userId = 'mikenike';
+    return this.http.get(this.url + `/entry?userId=${userId}`).subscribe(val => {
+      this.entries = val['entries'].filter(v => v).map((e, i) => {
+        return {
+          id: i,
+          ...e
+        }
+      });
+      if (this.entries.length > 0) {
+        this.visibleEntry = this.entries[0];
+      }
+    });
   }
 
   getChats(): Chat[] {
@@ -105,4 +91,24 @@ export class ApiService {
       id:5,
     }];
   }
+
+  flattenObject(ob) {
+    var toReturn = {};
+    
+    for (var i in ob) {
+      if (!ob.hasOwnProperty(i)) continue;
+      
+      if ((typeof ob[i]) == 'object') {
+        var flatObject = this.flattenObject(ob[i]);
+        for (var x in flatObject) {
+          if (!flatObject.hasOwnProperty(x)) continue;
+          
+          toReturn[i + '.' + x] = flatObject[x];
+        }
+      } else {
+        toReturn[i] = ob[i];
+      }
+    }
+    return toReturn;
+  };
 }

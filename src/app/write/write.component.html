@@ -5,7 +5,9 @@
 </div> -->
 
 <div class="col-md-11 mx-auto">
-  <h4 class="col-md-12">{{ apiService.visibleEntry.date | date }} </h4>
-  <input [(ngModel)]='apiService.visibleEntry.title' placeholder="Title" class="col-md-12 mb-3 title"/>
-  <textarea [(ngModel)]='apiService.visibleEntry.body' placeholder="Start writing..." class="col-md-12"></textarea>
+  <ng-container *ngIf="apiService.visibleEntry">
+    <h4 class="col-md-12">{{ apiService.visibleEntry.date | date }} </h4>
+    <input [(ngModel)]='apiService.visibleEntry.title' placeholder="Title" class="col-md-12 mb-3 title"/>
+    <textarea [(ngModel)]='apiService.visibleEntry.body' placeholder="Start writing..." class="col-md-12"></textarea>
+  </ng-container>
 </div>

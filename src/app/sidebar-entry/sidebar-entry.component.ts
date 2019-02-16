@@ -14,6 +14,7 @@ export class SidebarEntryComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
+    console.log(this.entry)
   }
 
 }

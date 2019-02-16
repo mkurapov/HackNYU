@@ -22,3 +22,11 @@
       font-size: 25px;
     //   height: 70px;
   }
+
+  .nav-holder {
+      height: calc(100% - 70px);
+  }
+
+  .sign-out {
+      transform: rotate(180deg)
+  }
