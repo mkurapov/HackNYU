@@ -9,12 +9,10 @@ import { ApiService } from '../api.service';
 })
 export class ConnectComponent implements OnInit {
 
-  tags = ['complaining about parents', 'walking dogs'];
-  messages= [];
   constructor(private uiService: UIService, private apiService: ApiService) { }
 
   ngOnInit() {
-    // this.uiService.optionsTitle = this.apiService.visibleEntry.date.toDateString();
+    
   }
 
 }

@@ -13,6 +13,7 @@ export class WriteComponent implements OnInit {
   constructor(private uiService: UIService, private apiService: ApiService) { }
 
   ngOnInit() {
+    // this.apiService.getEntries();
   }
 
 }

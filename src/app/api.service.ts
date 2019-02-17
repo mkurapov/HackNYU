@@ -35,15 +35,16 @@ export class ApiService {
     this.entries = [];
     this.chats = [];
     this.visibleChat = this.visibleEntry = {};
+    this.update$ = new Subject<any>();
   }
 
   subscribeUpdate() {
     this.update$.pipe(debounceTime(1000)).subscribe(val => {
       return this.updateEntry(this.visibleEntry).subscribe((val) => {
         this.visibleEntry.classifications = val['classifications'];
-        this.refreshUser();
-        this.refreshMatches();
-        this.getChats();
+        this.refreshUser()
+          .pipe(flatMap(() => this.refreshMatches()))
+          .subscribe(() => this.getChats());
       });
     });
   }
@@ -71,15 +72,11 @@ export class ApiService {
   }
 
   refreshMatches() {
-    return this.http.post(this.url + `/detectMatches`, {}).subscribe(val => { 
-      console.log('refresh matches:', val);
-    });
+    return this.http.post(this.url + `/detectMatches`, {});
   }
 
   refreshUser() {
-    return this.http.post(this.url + `/nlpUser?userId=${this.userId}`, {}).subscribe(val => { 
-      console.log('refresh user:', val);
-    });
+    return this.http.post(this.url + `/nlpUser?userId=${this.userId}`, {});
   }
 
 
