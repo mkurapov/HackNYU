@@ -13,7 +13,9 @@ export class WriteComponent implements OnInit {
   constructor(private uiService: UIService, private apiService: ApiService) { }
 
   ngOnInit() {
-    
+    if (this.apiService.visibleEntry) {
+      this.uiService.optionsTitle = this.apiService.visibleEntry.date.toString();
+    }
   }
 
 }

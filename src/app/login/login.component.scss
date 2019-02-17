@@ -1,0 +1,32 @@
+.bg {
+    background-image: url('../../assets/hex.png');
+    background-size: contain;
+    background-repeat: repeat;
+    opacity: 0.3;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top:0;
+    z-index: -1;
+}
+
+.bg2 {
+    background-color: #FEF7F5;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top:0;
+    z-index: -2;
+}
+
+input {
+    padding: 0 0;
+    font-size: 15px;
+    font-family: 'Rubik';
+    border-bottom: 1px solid #f1f1ff;
+    transition: all 0.3s ease-in-out;
+}
+
+input:focus {
+    border-bottom: 1px solid #EA5E40;
+}

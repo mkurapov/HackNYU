@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UIService } from '../ui.service';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-connect',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConnectComponent implements OnInit {
 
-  constructor() { }
+  tags = ['complaining about parents', 'walking dogs'];
+  messages= ['asdfasdf', 
+  'asdfasdfsd', 
+  'asdfasdfsd', 
+  'asdfasdfsd', 
+  'asdfasdfsd', 
+  'asdfasdfsd', 
+  'asdfasdfsd', 
+  'asdfasdfsd', 
+  'asdfasdfsd', 
+  'asdfasdfasdfasdf'];
+  constructor(private uiService: UIService, private apiService: ApiService) { }
 
   ngOnInit() {
+    // this.uiService.optionsTitle = this.apiService.visibleEntry.date.toDateString();
   }
 
 }

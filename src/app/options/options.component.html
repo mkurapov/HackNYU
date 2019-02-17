@@ -1,10 +1,13 @@
-<div class="options position-fixed border-bottom d-flex" [ngClass]="{ 'move': uiService.isSidebarVisible }" >
+<div class="options position-fixed border border-bottom order-bottom d-flex" [ngClass]="{ 'move': uiService.isSidebarVisible }" >
   <div class="col-md-10 d-flex align-items-center  mx-auto">
       <span (click)="uiService.onToggleSidebar()" class="d-flex align-items-center pointer text-primary">
           <i *ngIf="uiService.isSidebarVisible" class="fas fa-chevron-right"></i>
           <i *ngIf="!uiService.isSidebarVisible" class="fas fa-chevron-left"></i>
         </span>  
-      
+        
+        <div>
+          <!-- {{ uiService.optionsTitle }} -->
+        </div>
         <div class="ml-auto d-flex align-items-center">
             <span (click)="onCreate()" class="text-primary pointer">
                 Create

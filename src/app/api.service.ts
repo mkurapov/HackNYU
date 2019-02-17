@@ -15,8 +15,8 @@ export class ApiService {
   private entries: Entry[] = [];
   private chats: Chat[];
 
-  private visibleEntry:Entry;
-  private visibleChat:Chat;
+  visibleEntry:Entry;
+  visibleChat:Chat;
 
   constructor(private http:HttpClient) { 
     this.getEntries();
