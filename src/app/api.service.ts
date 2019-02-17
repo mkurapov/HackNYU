@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of, Subject } from 'rxjs';
+import { Observable, of, Subject, BehaviorSubject } from 'rxjs';
 import { switchMap, debounceTime } from 'rxjs/operators';
 
 
@@ -31,6 +31,19 @@ export class ApiService {
     this.chats = this.getChats();
   }
 
+  subscribeUpdate() {
+    this.update$.pipe(debounceTime(1000)).subscribe(val => {
+      return this.updateEntry(this.visibleEntry).subscribe((val) => {
+        this.visibleEntry.classifications = val['classifications'];
+      });
+      // 
+    });
+  }
+
+  updateEntry(entry) {
+    return this.http.put(this.url + `/entry?entryId=${entry.id}&userId=${this.userId}&entryTitle=${entry.title}&entryBody=${entry.body}`, {});
+  }
+
   login() {
     return of(true);
   }
@@ -38,19 +51,18 @@ export class ApiService {
   createEntry() {
     return this.http.post(this.url + `/entry?userId=${this.userId}`, {}).subscribe(val => { 
       console.log(val);
+      val['title']='';
+      val['body']='';
       this.entries.unshift(val);
       this.visibleEntry = val;
     });
   }
 
   onEntryEdit() {
+    console.log(this.visibleEntry)
+    this.update$.next();
     // console.log(this.visibleEntry);
-    const put = this.http.put(this.url + `/entry?entryId=${this.visibleEntry.id}&userId=${this.userId}&entryTitle=${this.visibleEntry.title}&entryBody=${this.visibleEntry.body}`, {});
-    this.update$.pipe(debounceTime(1000)).pipe(() => put).subscribe(val => {
-      console.log(val);
-      // this.entries.unshift(val);
-      // this.visibleEntry = val;
-    });
+    
 
     // put.subscribe(val => {
     //   this.visibleEntry.classifications  = val['classifications'];
@@ -82,6 +94,8 @@ export class ApiService {
         this.visibleEntry = this.entries[0];
       }
       console.log(this.entries);
+
+      this.subscribeUpdate();
     });
   }
 
