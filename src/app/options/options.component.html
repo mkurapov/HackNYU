@@ -7,8 +7,8 @@
         
         <div *ngIf="!uiService.isMessengerVisible" class="option-title mx-auto d-flex flex-column text-center">
             <h5 class="mb-1">{{ apiService.visibleEntry.title }}</h5>
-            <div *ngIf="apiService.visibleEntry.classifications">
-              <span class="tag__sm" [ngClass]="{'tag__sm--bad' : tag.sentiment < 0.2, 'tag__sm--good' : tag.sentiment > 0 }" *ngFor="let tag of apiService.visibleEntry.classifications">{{ tag.name }}</span>
+            <div *ngIf="apiService.visibleEntry && apiService.visibleEntry.classifications">
+              <span class="tag__sm" [ngClass]="{'tag__sm--bad' : tag.sentiment < 0, 'tag__sm--good' : tag.sentiment > 0.2 }" *ngFor="let tag of apiService.visibleEntry.classifications">{{ tag.name }}</span>
             </div>
         </div>
 
@@ -16,15 +16,15 @@
 
         <div *ngIf="uiService.isMessengerVisible" class="option-title mx-auto text-center">
             <h6>{{ apiService.visibleChat.name }}</h6>
-            <div *ngIf="apiService.visibleChat.classifications">
-              <span class="tag__sm" [ngClass]="{'tag__sm--bad' : tag.sentiment < 0.2, 'tag__sm--good' : tag.sentiment > 0 }" *ngFor="let tag of tags">{{ tag }}</span>
+            <div *ngIf="apiService.visibleChat && apiService.visibleChat.classifications">
+              <span class="tag__sm" [ngClass]="{'tag__sm--bad' : tag.sentiment < 0.2, 'tag__sm--good' : tag.sentiment > 0 }" *ngFor="let tag of apiService.visibleChat.classifications">{{ tag.name }}</span>
             </div>
         </div>
 
 
         <div class="text-right option-btn d-flex justify-content-end">
             <span (click)="onCreate()" *ngIf="!uiService.isMessengerVisible" class="text-primary pointer text-right">
-                Create
+                New Post
             </span>
         </div>
   </div>

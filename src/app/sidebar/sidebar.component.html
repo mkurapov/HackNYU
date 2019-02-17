@@ -1,14 +1,14 @@
 <div class="sidebar h-100" [ngClass]="{ 'active': uiService.isSidebarVisible }">
   <div class="position-relative h-100">
       <div class="position-fixed search-container d-block w-100 border border-bottom">
-          <input class="w-100 px-4 py-4 search" placeholder="Search..."/>
+          <input class="w-100 px-4 py-4 search" [(ngModel)]="apiService.searchTerm" placeholder="Search..."/>
         </div>
         <div class="entry-container">
             <ng-container *ngIf="url === '/write'">
-              <app-sidebar-entry *ngFor="let entry of apiService.entries" [entry]="entry"></app-sidebar-entry>
+              <app-sidebar-entry *ngFor="let entry of apiService.filteredEntries" [entry]="entry"></app-sidebar-entry>
             </ng-container>
             <ng-container *ngIf="url === '/connect'">
-              <app-sidebar-chat *ngFor="let chat of apiService.chats" [chat]="chat"></app-sidebar-chat> 
+              <app-sidebar-chat *ngFor="let chat of apiService.filteredChats" [chat]="chat"></app-sidebar-chat> 
             </ng-container>
         </div>
   </div>

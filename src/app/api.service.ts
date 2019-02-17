@@ -12,15 +12,17 @@ import { Entry, Chat } from './models/general';
 })
 export class ApiService {
   private url:string = 'http://justwrite.appspot.com';
-  userId: string = '';
+  userId: string = 'mikenike';
 
 
   private update$ = new Subject<any>();
 
   private isLoggedIn: boolean = false;
   private entries: Entry[] = [];
+
   private chats: Chat[];
 
+  searchTerm: string;
 
 
   visibleEntry:Entry;
@@ -37,7 +39,7 @@ export class ApiService {
   }
 
   subscribeUpdate() {
-    this.update$.pipe(debounceTime(2000)).subscribe(val => {
+    this.update$.pipe(debounceTime(1000)).subscribe(val => {
       return this.updateEntry(this.visibleEntry).subscribe((val) => {
         this.visibleEntry.classifications = val['classifications'];
       });
@@ -79,6 +81,17 @@ export class ApiService {
     // obs.subscribe(val => { 
      
     // });
+  }
+
+  get filteredEntries() {
+    console.log(this.searchTerm);
+    if (this.searchTerm && this.searchTerm.length > 0) {
+      return this.entries.filter(en => {
+        return en.title.toLowerCase().includes(this.searchTerm.toLowerCase()) || en.body.includes(this.searchTerm.toLowerCase())
+      });
+    } 
+
+    return this.entries;
   }
 
   onSelectEntry(id) {
