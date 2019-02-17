@@ -12,12 +12,10 @@
             </div>
         </div>
 
-
-
         <div *ngIf="uiService.isMessengerVisible" class="option-title mx-auto text-center">
             <h6>{{ apiService.visibleChat.name }}</h6>
-            <div *ngIf="apiService.visibleChat && apiService.visibleChat.classifications">
-              <span class="tag__sm" [ngClass]="{'tag__sm--bad' : tag.sentiment < 0.2, 'tag__sm--good' : tag.sentiment > 0 }" *ngFor="let tag of apiService.visibleChat.classifications">{{ tag.name }}</span>
+            <div *ngIf="apiService.visibleChat && apiService.visibleChat.tags">
+              <span class="tag__sm" [ngClass]="{'tag__sm--bad' : tag.sentiment < 0.2, 'tag__sm--good' : tag.sentiment > 0 }" *ngFor="let tag of apiService.visibleChat.tags">{{ tag.name }}</span>
             </div>
         </div>
 

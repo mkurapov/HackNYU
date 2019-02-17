@@ -28,7 +28,7 @@ export interface Chat {
     id?:number,
     users?: User[];
     name?: string;
-    classifications?:Classification[]
+    tags?:Classification[]
     messages?:Message[]
 }
 
