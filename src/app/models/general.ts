@@ -18,10 +18,17 @@ export interface User {
     classifications?:Classification[]
 }
 
+export interface Message {
+    body?:string;
+    senderId?:string;
+    receiverId?:string;
+}
+
 export interface Chat {
     id?:number,
     users?: User[];
     name?: string;
     classifications?:Classification[]
+    messages?:Message[]
 }
 

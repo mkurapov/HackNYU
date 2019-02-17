@@ -16,5 +16,4 @@ export class SidebarChatComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

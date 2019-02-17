@@ -1,9 +1,17 @@
 
-<div class="connect col-md-11 mx-auto d-flex flex-column align-self-end">
-    <div class="mb-5 message bg-beige" *ngFor="let message of messages"> {{message}} </div>
+<div class="connect col-md-11 mx-auto d-flex flex-column justify-content-end align-self-end">
+  <div class="mb-4 message bg-beige ml-auto" *ngFor="let message of apiService.visibleChat.messages">
+     {{message.body}} 
+    </div>
+
+
   <div class="col-md-7 mx-auto text-center">
-    <h4 class="mb-4">Connected based on:</h4>
-    <span class="tag bg-beige pointer mb-3 mr-2 border-round py-2 px-3" *ngFor="let tag of tags">{{ tag }}</span>
+
   </div>
 
 </div>
+
+<!-- <div class="col-md-7 mx-auto text-center">
+    <h4 class="mb-4">Connected based on:</h4>
+    <span class="tag bg-beige pointer mb-3 mr-2 border-round py-2 px-3" *ngFor="let tag of tags">{{ tag }}</span>
+  </div> -->

@@ -23,6 +23,7 @@ export class DashboardComponent implements OnInit {
    }
 
   ngOnInit() {
-    // this.apiService.getEntries();
+    this.apiService.getEntries();
+    this.apiService.getChats(); 
   }
 }

@@ -1,5 +1,5 @@
 <div class="messenger position-fixed border border-bottom order-bottom d-flex" [ngClass]="{ 'move': uiService.isSidebarVisible }" >
   
-  <input class="px-3 py-4 search col-md-12" placeholder="Message..."/>
+  <input class="px-3 py-4 search col-md-12"  [(ngModel)]='newMessage' placeholder="Message..."/>
 
 </div>

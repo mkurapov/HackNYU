@@ -12,7 +12,7 @@ import { Entry, Chat } from './models/general';
 })
 export class ApiService {
   private url:string = 'http://justwrite.appspot.com';
-  private userId: string = 'mikenike';
+  userId: string = '';
 
 
   private update$ = new Subject<any>();
@@ -27,17 +27,26 @@ export class ApiService {
   visibleChat:Chat;
 
   constructor(private http:HttpClient) { 
-    this.getEntries();
-    this.chats = this.getChats();
+  }
+
+  logout() {
+    this.userId = '';
+    this.entries = [];
+    this.chats = [];
+    this.visibleChat = this.visibleEntry = null;
   }
 
   subscribeUpdate() {
-    this.update$.pipe(debounceTime(1000)).subscribe(val => {
+    this.update$.pipe(debounceTime(2000)).subscribe(val => {
       return this.updateEntry(this.visibleEntry).subscribe((val) => {
         this.visibleEntry.classifications = val['classifications'];
       });
       // 
     });
+  }
+
+  isValidUser() {
+    return true;
   }
 
   updateEntry(entry) {
@@ -81,8 +90,7 @@ export class ApiService {
   }
 
   getEntries() {
-    let userId = 'mikenike';
-    return this.http.get(this.url + `/entry?userId=${userId}`).subscribe(val => {
+    return this.http.get(this.url + `/entry?userId=${this.userId}`).subscribe(val => {
       console.log(val);
       this.entries = val['entries'].filter(v => v).map((e, i) => {
         return {
@@ -90,6 +98,9 @@ export class ApiService {
           ...e
         }
       });
+
+      this.entries.sort((a, b) => b.id - a.id);
+
       if (this.entries.length > 0) {
         this.visibleEntry = this.entries[0];
       }
@@ -99,24 +110,36 @@ export class ApiService {
     });
   }
 
-  getChats(): Chat[] {
-    return [{
-      id:1,
-      name:"Dogs"
-    },
-    {
-      id:2,
-      name:"Cats"
-    },
-    {
-      id:3,
-    },
-    {
-      id:4,
-    },
-    {
-      id:5,
-    }];
+  getChats() {
+    this.chats.push({
+      name:'Anonymous Lemur',
+      id:0,
+      messages:[{
+        body:'Hello'
+      }
+      ]
+    });
+
+    this.visibleChat = this.chats[0];
+
+
+    // return this.http.get(this.url + `/chat?userId=${this.userId}`).subscribe(val => {
+    //   console.log(val);
+    //   this.chats = val['chats'].filter(v => v).map((c, i) => {
+    //     return {
+    //       id: i,
+    //       ...c
+    //     }
+    //   });
+
+    //   this.chats.sort((a, b) => b.id - a.id);
+
+    //   if (this.chats.length > 0) {
+    //     this.visibleChat = this.chats[0];
+    //   }
+    //   console.log(this.chats);
+      
+    // });
   }
 
 }

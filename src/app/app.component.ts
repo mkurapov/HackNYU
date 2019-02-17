@@ -14,6 +14,6 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    // this.api.getPosts().subscribe();
+    this.apiService.logout();
   }
 }

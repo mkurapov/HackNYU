@@ -21,10 +21,15 @@
   .link-item {
       font-size: 25px;
     //   height: 70px;
+    opacity: 0.3;
   }
 
   .link-item:hover {
 
+  }
+
+  .active-link {
+    opacity: 1;
   }
 
   .nav-holder {
@@ -32,5 +37,6 @@
   }
 
   .sign-out {
-      transform: rotate(180deg)
+      transform: rotate(180deg);
+      opacity: 1;
   }

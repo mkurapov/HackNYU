@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  password: string;
+  constructor(private apiService: ApiService, private router: Router) { }
+
+
 
   ngOnInit() {
+    this.apiService.logout();
   }
 
+  get isPasswordSet() {
+    return this.password && this.password.length > 0;
+  }
+
+  login() {
+    if (this.isPasswordSet) {
+      this.router.navigate(['/write']);
+    }
+  }
 }
