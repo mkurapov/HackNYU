@@ -16,6 +16,8 @@ export class DashboardComponent implements OnInit {
     router.events.subscribe(val => {
       if (val instanceof NavigationEnd) {
         this.url = val.url;
+        console.log(this.url);
+        this.uiService.isMessengerVisible = this.url === '/connect';
       }
     })
    }

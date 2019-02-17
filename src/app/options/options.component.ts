@@ -8,7 +8,7 @@ import { ApiService } from '../api.service';
   styleUrls: ['./options.component.scss']
 })
 export class OptionsComponent implements OnInit {
-
+  
   constructor(private uiService: UIService, private apiService: ApiService) { }
 
   ngOnInit() {

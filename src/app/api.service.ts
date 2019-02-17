@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
+import { switchMap, debounceTime } from 'rxjs/operators';
+
 
 import { Entry, Chat } from './models/general';
 
@@ -10,10 +12,16 @@ import { Entry, Chat } from './models/general';
 })
 export class ApiService {
   private url:string = 'http://justwrite.appspot.com';
+  private userId: string = 'mikenike';
+
+
+  private update$ = new Subject<any>();
 
   private isLoggedIn: boolean = false;
   private entries: Entry[] = [];
   private chats: Chat[];
+
+
 
   visibleEntry:Entry;
   visibleChat:Chat;
@@ -28,20 +36,28 @@ export class ApiService {
   }
 
   createEntry() {
-    let newEntry = {
-      id:10,
-      date: new Date(),
-      title:'',
-      body:''
-    }
-    return of(newEntry).subscribe(val => { 
+    return this.http.post(this.url + `/entry?userId=${this.userId}`, {}).subscribe(val => { 
+      console.log(val);
       this.entries.unshift(val);
       this.visibleEntry = val;
     });
   }
 
   onEntryEdit() {
-    console.log(this.visibleEntry);
+    // console.log(this.visibleEntry);
+    const put = this.http.put(this.url + `/entry?entryId=${this.visibleEntry.id}&userId=${this.userId}&entryTitle=${this.visibleEntry.title}&entryBody=${this.visibleEntry.body}`, {});
+    this.update$.pipe(debounceTime(1000)).pipe(() => put).subscribe(val => {
+      console.log(val);
+      // this.entries.unshift(val);
+      // this.visibleEntry = val;
+    });
+
+    // put.subscribe(val => {
+    //   this.visibleEntry.classifications  = val['classifications'];
+    // });
+    // obs.subscribe(val => { 
+     
+    // });
   }
 
   onSelectEntry(id) {
@@ -52,14 +68,10 @@ export class ApiService {
     this.visibleChat = this.chats.find(e => e.id == id);
   }
 
-
-  editEntry(entry): Observable<any> {
-    return this.http.put(this.url + '/entry', entry);
-  }
-
   getEntries() {
     let userId = 'mikenike';
     return this.http.get(this.url + `/entry?userId=${userId}`).subscribe(val => {
+      console.log(val);
       this.entries = val['entries'].filter(v => v).map((e, i) => {
         return {
           id: i,
@@ -69,6 +81,7 @@ export class ApiService {
       if (this.entries.length > 0) {
         this.visibleEntry = this.entries[0];
       }
+      console.log(this.entries);
     });
   }
 
@@ -92,23 +105,4 @@ export class ApiService {
     }];
   }
 
-  flattenObject(ob) {
-    var toReturn = {};
-    
-    for (var i in ob) {
-      if (!ob.hasOwnProperty(i)) continue;
-      
-      if ((typeof ob[i]) == 'object') {
-        var flatObject = this.flattenObject(ob[i]);
-        for (var x in flatObject) {
-          if (!flatObject.hasOwnProperty(x)) continue;
-          
-          toReturn[i + '.' + x] = flatObject[x];
-        }
-      } else {
-        toReturn[i] = ob[i];
-      }
-    }
-    return toReturn;
-  };
 }

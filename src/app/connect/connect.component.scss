@@ -1,14 +1,8 @@
-.tag {
-    
+.connect {
+    padding-bottom: 100px;
+    min-height: 100vh;
 }
 
-.send {
-    bottom:0;
-    right:0;
-    // background: orangered;
-    width: calc(100% - 70px);
-    height:73px;
-    position: fixed;
-    z-index: 98;
-    transition: all 0.5s ease-in-out;
+.message {
+    width: 200px;
 }

@@ -1,8 +1,10 @@
-.options {
+.messenger {
     background: rgba(255,255,255,0.9);
-    top:0;
+    bottom:0;
     right:0;
     // background: orangered;
+    
+    border-top: 1px solid #f1f1f1;
     width: calc(100% - 70px);
     height:73px;
     position: fixed;
@@ -10,15 +12,12 @@
     transition: all 0.5s ease-in-out;
 }
 
-.options.move {
+.messenger.move {
     // transform: translateX(250px);
     width: calc(100% - 70px - 250px);
 }
 
-.option-btn {
-    min-width: 100px;
-}
-
-.option-title {
-    width: 400px;
+input {
+    font-family: 'Rubik';
+    font-size: 15px;
 }

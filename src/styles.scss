@@ -52,6 +52,10 @@ a {
     text-align: center;
 }
 
+.text-right {
+    text-align: right;
+}
+
 .border {
     border-color: $grey;
 }
@@ -120,3 +124,20 @@ textarea {
 .pointer {
     cursor: pointer;
 }
+
+
+.tag__sm {
+    background-color: $beige;
+    font-size: 10px;
+    padding: 5px 6px;
+    margin-right:3px;
+    border-radius: 20px;
+}
+
+.tag__sm--good {
+    background-color: #C4FFDF;
+}
+
+.tag__sm--bad {
+    background-color: #FF9595;
+} 

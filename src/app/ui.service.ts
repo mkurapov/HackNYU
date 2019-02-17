@@ -6,6 +6,7 @@ import { Entry, Chat } from './models/general';
 })
 export class UIService {
   isSidebarVisible = true;
+  isMessengerVisible = false;
   optionsTitle = '';
 
   constructor() { 
@@ -14,6 +15,4 @@ export class UIService {
   onToggleSidebar() {
     this.isSidebarVisible = !this.isSidebarVisible;
   }
-  
-
 }
